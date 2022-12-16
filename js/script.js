@@ -55,6 +55,7 @@ designSelect.addEventListener('change', () => {
 const activitiesFieldset = document.querySelector('#activities');
 const totalCostDisplay = document.querySelector('#activities-cost');
 const datedActivityCheckboxes = document.querySelectorAll('[data-day-and-time]');
+const activitiesArray = document.querySelectorAll('[type="checkbox"]');
 let totalCost = 0;
 
 activitiesFieldset.addEventListener('change', (e) => {
@@ -91,5 +92,43 @@ activitiesFieldset.addEventListener('change', (e) => {
         }
       });
     };
+  };
+});
+
+// LISTEN FOR FOCUS
+activitiesArray.forEach(activity => {
+
+  activity.addEventListener('focus', () => {
+    activity.parentElement.classList.add('focus');
+  });
+
+  activity.addEventListener('blur', () => {
+    activity.parentElement.classList.remove('focus'); 
+  });
+});
+
+/* ================== PAYMENT SECTION ================== */
+
+const paymentSelect = document.querySelector('#payment');
+const payCredit = document.querySelector('#credit-card');
+const payPaypal = document.querySelector('#paypal');
+const payBitcoin = document.querySelector('#bitcoin');
+
+payPaypal.classList.add('hidden');
+payBitcoin.classList.add('hidden');
+
+paymentSelect.addEventListener('change', () => {
+  if (paymentSelect.value === 'credit-card') {
+    payCredit.classList.remove('hidden');
+    payPaypal.classList.add('hidden');
+    payBitcoin.classList.add('hidden');
+  } else if (paymentSelect.value === 'paypal') {
+    payCredit.classList.add('hidden');
+    payPaypal.classList.remove('hidden');
+    payBitcoin.classList.add('hidden');
+  } else if (paymentSelect.value === 'bitcoin') {
+    payCredit.classList.add('hidden');
+    payPaypal.classList.add('hidden');
+    payBitcoin.classList.remove('hidden');
   };
 });
