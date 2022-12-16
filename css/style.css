@@ -212,7 +212,6 @@ button:hover {
 }
 
 .hint {
-  display: none;
   color: red;
   margin: 0;
   transition: all 0.3s ease-out;
@@ -271,7 +270,7 @@ button:hover {
 
 .activities.valid::after,
 .activities.not-valid::after {
-  top: 5px;
+  top: -25px;
 }
 /* ================================= 
   Basic info and t shirt styles
